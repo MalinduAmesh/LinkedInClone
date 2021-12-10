@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "618399894306",
+    "project_id": "linkedinclonemaglv",
+    "storage_bucket": "linkedinclonemaglv.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:618399894306:android:b7746a8397a03583c8337b",
+        "android_client_info": {
+          "package_name": "com.linkedinclone"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "618399894306-98uknqqd4b6pfm9u4130irgu4c4b79va.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBayzASE6Bp57BpWDfbMXbh-5RMnbWBhAw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "618399894306-98uknqqd4b6pfm9u4130irgu4c4b79va.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
