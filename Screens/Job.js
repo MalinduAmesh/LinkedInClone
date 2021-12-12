@@ -54,7 +54,7 @@ export default class Job extends Component {
 
 
             <View style={{ flex: 9, backgroundColor: "white" }} >
-            <TouchableOpacity style={{width:100,height:50,backgroundColor: "red"}}
+            <TouchableOpacity style={{width:100,height:30,backgroundColor: "blue"}}
             onPress={this.signOut}
             >
             <Text>Sign Out</Text>

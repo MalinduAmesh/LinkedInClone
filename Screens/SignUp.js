@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
-import { Text, View ,StyleSheet,TouchableOpacity,KeyboardAvoidingView} from 'react-native'
+import { Text, View ,StyleSheet,TouchableOpacity,KeyboardAvoidingView,Image} from 'react-native'
 import { TextInput,Button  } from 'react-native-paper';
 import CheckBox from 'react-native-check-box'
 import auth from '@react-native-firebase/auth';
 import { GoogleSignin,GoogleSigninButton } from '@react-native-google-signin/google-signin';
+import { LoginManager, AccessToken } from 'react-native-fbsdk-next';
 
 GoogleSignin.configure({
     webClientId: '618399894306-98uknqqd4b6pfm9u4130irgu4c4b79va.apps.googleusercontent.com',
@@ -64,12 +65,41 @@ export default class SignUp extends Component {
       
       
            }
+// 
+        //    onFacebookButtonPress = async() =>{
+        //     const result = await LoginManager.logInWithPermissions(['public_profile', 'email']);
+
+        //     if (result.isCancelled) {
+        //       throw 'User cancelled the login process';
+        //     }
+          
+        //     // Once signed in, get the users AccesToken
+        //     const data = await AccessToken.getCurrentAccessToken();
+          
+        //     if (!data) {
+        //       throw 'Something went wrong obtaining access token';
+        //     }
+          
+        //     // Create a Firebase credential with the AccessToken
+        //     const facebookCredential = auth.FacebookAuthProvider.credential(data.accessToken);
+          
+        //     // Sign-in the user with the credential
+        //     return auth().signInWithCredential(facebookCredential);
+        //    }
+
     render() {
         return (
             <KeyboardAvoidingView
             behavior={Platform.OS === "ios" ? "padding" : "height"}
             style={styles.container}
           >
+           <Image
+                    style={{ width: 210, height: 50,position:'relative',top:15,right:70 }}
+                    source={require('../assets/LI-Logo.png')}
+                    />
+
+                    <Text style={{fontSize:30,position:'relative',top:50,right:120}}>Sign Up</Text>
+
                 <TextInput
                     label="Email address or phone number"
                     value={this.state.email}
@@ -91,6 +121,7 @@ export default class SignUp extends Component {
                 <TextInput
                     label="Enter Password"
                     value={this.state.password}
+                    secureTextEntry={true}
                     onChangeText={text => this.setState(
                         {password: text}
                     )}
@@ -123,9 +154,17 @@ export default class SignUp extends Component {
 
                     <Text>──────────────── Or ────────────────</Text>
 
-                    <TouchableOpacity style={styles.neomorph41}>
-                        <Text style={{position:'relative',left:110,top:15, color:"white" }}>Join LinkedIn</Text>
-                    </TouchableOpacity>
+                    {/* <TouchableOpacity style={styles.neomorph41}
+                    // onPress={}
+                    > */}
+                    
+                    <Button
+                    title="Facebook Sign-In"
+                    onPress={() => onFacebookButtonPress().then(() => console.log('Signed in with Facebook!'))}
+                    />
+
+                        {/* <Text style={{position:'relative',left:110,top:15, color:"white" }}>Join with FB</Text>
+                    </TouchableOpacity> */}
                     
                     <GoogleSigninButton
                         style={{ width: 192, height: 48 }}

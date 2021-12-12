@@ -9,6 +9,7 @@ import MaterialCommunityIcons
 from 'react-native-vector-icons/MaterialCommunityIcons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Foundation from 'react-native-vector-icons/Foundation';
+import { Icon } from 'react-native-elements'
 
 export default class HomeView extends Component {
     constructor(props) {
@@ -44,9 +45,10 @@ export default class HomeView extends Component {
         return (
             <View style={styles.container}> 
             <View style={{ flex: 3/3, backgroundColor: "white"}}>
+
             <TouchableOpacity style={styles.proImage} 
             onPress={()=>{
-                
+                this.props.navigation.navigate('StackNavigatorFor')
             }}>
                    <Image
                     style={{ width: 50, height: 50, borderRadius: 150 / 2 }}
@@ -55,7 +57,7 @@ export default class HomeView extends Component {
             </TouchableOpacity>
 
             <SearchBar containerStyle={{position:'relative',left:73,bottom:38, height:10,width:240}}
-                placeholder="Type Here..."
+                placeholder="Search Here"
                 lightTheme
                 noIcon
                 inputStyle={{margin: 0}}
@@ -83,32 +85,59 @@ export default class HomeView extends Component {
 
                     <Image
                     style={{marginRight:300, width: 45, height: 45, borderRadius: 150 / 2 }}
-                    source={require('../assets/user.png')}
+                    source={require('../assets/IMG_6316.jpg')}
                     />
-                    <Text style={{position:'absolute',bottom:480}}>User ID: {item.key}</Text>
-                    <Text style={{position:'absolute',bottom:456}}>Seneior software enginner</Text>
+                    <Text style={{position:'absolute',bottom:530,fontSize:17,marginLeft:200}}>Malindu Amesh</Text>
+                    <Text style={{position:'absolute',bottom:510,}}>Seneior software enginner</Text>
                     <Text  style={{marginRight:300 ,padding:10,fontSize:18}}>{item.userTopic}</Text>
                     <Image
-                        style={{width: 350,height: 350}}
+                        style={{width: 400,height: 350}}
                         source={{uri: item.imageUrl}}/>
                   
+                  <View style={{display: 'flex',alignItems:'flex-start', flexDirection: 'row',marginTop:10,marginRight:280}}>
+                    <Icon
+                        size={15}
+                        name='thumbs-up'
+                        type='font-awesome'
+                        color='#0A66C2'
+                    />
+
+                    <Icon
+                        size={15}
+                        name='comments'
+                        type='font-awesome'
+                        color='#d05cd8'
+                        style={{margin:2}}
+                    />
+                    <Icon
+                        size={15}
+                        name='heart'
+                        type='font-awesome'
+                        color='#69b575'
+                        style={{margin:2}}
+                    />
+                    <Text style={{color:'#000000',marginTop:-2,marginLeft:4,fontSize:14}}>27</Text>
+                </View>
+
+                <Text style={styles.textRegister}> ────────────────────────────────────</Text>
+
                     <View style={{flex: 1,flexDirection:'row'}}> 
                     <TouchableOpacity style={styles.userButton}>
 
-                    <Foundation name="like" size={27}style={{flex: 3, alignItems: 'flex-end', justifyContent: 'center'}}/>
+                    <Foundation name="like" size={26}style={{flex: 3, alignItems: 'flex-end', justifyContent: 'center'}}/>
                     <Text>like</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.userButton2}>
-                    <MaterialIcons name="chat" size={27}style={{flex: 3, alignItems: 'flex-end', justifyContent: 'center'}}/>
-                    <Text>like</Text>
+                    <MaterialIcons name="chat" size={21}style={{flex: 3, alignItems: 'flex-end', justifyContent: 'center'}}/>
+                    <Text>comment</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.userButton3}>
                     <MaterialCommunityIcons name="share-outline" size={27}style={{flex: 3, alignItems: 'flex-end', justifyContent: 'center'}}/>
-                    <Text>like</Text>
+                    <Text>share</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.userButton4}>
                     <FontAwesome name="send" size={19}style={{flex: 3, alignItems: 'flex-end', justifyContent: 'center',padding:6}}/>
-                    <Text>like</Text>
+                    <Text>send</Text>
                     </TouchableOpacity>
                     </View>
 

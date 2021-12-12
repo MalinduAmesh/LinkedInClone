@@ -1,6 +1,6 @@
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import TabNavigator from './TabNavigator'
-import StackNavigator from './StackNavigator'
+import StackNavigator from './StackNavigatorFor'
 
 const Drawer = createDrawerNavigator();
 

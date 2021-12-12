@@ -10,7 +10,7 @@ function UserProfilez(){
     
 const Stack = createStackNavigator();
 
-function StackNavigator() {
+function StackNavigatorFor() {
   return (
     <Stack.Navigator>
       <Stack.Screen name="UserProfile" component={UserProfile} />
@@ -18,4 +18,4 @@ function StackNavigator() {
   );
 }
 
-export default StackNavigator
+export default StackNavigatorFor

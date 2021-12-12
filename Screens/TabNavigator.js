@@ -1,9 +1,10 @@
 import React from 'react'
 import MyNetwork from './MyNetwork'
+import { Text, View,LogBox } from 'react-native'
 import HomeView from './HomeView'
-import Post from './Post'
+import Post from './Post2'
 import Job from './Job'
-import StackNavigator from './StackNavigator'
+import StackNavigator from './StackNavigatorFor'
 import Notification from './Notification'
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
@@ -34,6 +35,9 @@ function jobsScreen(){
 }
 
 function TabNavigator() {
+  
+  LogBox.ignoreAllLogs(true)
+
     return (
       // <NavigationContainer>
 
@@ -100,8 +104,7 @@ function TabNavigator() {
       <Tab.Screen options={{ headerShown: false }}  name="MyNetwork" component={MyNetwork} />
       <Tab.Screen options={{ headerShown: false }}  name="Post" component={Post} />
       <Tab.Screen options={{ headerShown: false }}  name="Notification" component={Notification} />
-      <Tab.Screen options={{ headerShown: false }}  name="Job" component={Job} />
-      <Tab.Screen options={{ headerShown: false }}  name="StackNavigator" component={StackNavigator} />
+      <Tab.Screen options={{ headerShown: false }}  name="Job" component={Job} /> 
     </Tab.Navigator>
     /* </NavigationContainer> */
     )

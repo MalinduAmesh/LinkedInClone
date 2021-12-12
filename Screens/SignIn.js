@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, View ,StyleSheet,TouchableOpacity,KeyboardAvoidingView,Alert } from 'react-native'
+import { Text, View ,StyleSheet,TouchableOpacity,KeyboardAvoidingView,Alert,Image } from 'react-native'
 import { TextInput,Button  } from 'react-native-paper';
 import CheckBox from 'react-native-check-box'
 import auth from '@react-native-firebase/auth';
@@ -68,6 +68,11 @@ export default class SignIn extends Component {
             behavior={Platform.OS === "ios" ? "padding" : "height"}
             style={styles.container}
           >
+                              <Text style={{fontSize:30,position:'relative',top:130,right:130}}>Sign in</Text>
+                     <Image
+                    style={{ width: 210, height: 50,position:'relative',top:15,right:70 }}
+                    source={require('../assets/LI-Logo.png')}
+                    />
                 <TextInput
                     label="Email address or phone number"
                     value={this.state.email}

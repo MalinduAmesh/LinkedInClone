@@ -10,17 +10,13 @@ import { utils } from '@react-native-firebase/app';
 import storage from '@react-native-firebase/storage';
 import firestore from '@react-native-firebase/firestore';
 
-export default class Post extends Component {
-    constructor(props) {
-        super(props)
-    
-        this.state = {
-             imagePath:'',
-             imageName:'',
-             userTopic:'',
-             imageUrl:''
-        }
-    }
+ const Post2 =()=> {
+
+    const [imagePath,setImagePath] = React.useState('');
+    const [imageName,setImageName] = React.useState('');
+    const [userTopic,setUserTopic] = React.useState('');
+    const [imageUrl,setImageUrl] = React.useState('');
+
     getImage = ()=>{
         ImagePicker.openPicker({
             width: 300,
@@ -28,55 +24,44 @@ export default class Post extends Component {
             cropping: true
           }).then(image => {
             console.log(image);
-            this.setState({
-                imagePath:image.path
-            })
-            this.setState({
-                imageName:image.modificationDate
-            })
-            this.uploadImages();
+            if(image){
+                setImagePath(image.path);
+                setImageName(image.modificationDate);
+                uploadImages();
+            }
+
           });
     }
 
     uploadImages = async () =>{
-        const fileName = this.state.imageName;
-
+        const fileName =imageName;
         const reference = storage().ref(`images/${fileName}.jpg`);
-        await reference.putFile(this.state.imagePath);
-
-        this.setState({
-            imageUrl:await storage().ref(`images/${fileName}.jpg`).getDownloadURL()
-        })
-        console.log(this.state.imageUrl);
+        await reference.putFile(imagePath);
+        setImageUrl(await storage().ref(`images/${fileName}.jpg`).getDownloadURL())
+        console.log(imageUrl);
     }
 
     addUserPost = () =>{
         firestore()
             .collection('users')
             .add({
-                url:this.state.imageUrl,
-                userTopic:this.state.userTopic,
+                url:imageUrl,
+                userTopic:userTopic,
                 like:'like',
                 Comment:'comment',
                 share:'share',
                 send:'send'
             })
-            .then(() => {
+            .then((data) => {
                 // console.log('Total users: ', querySnapshot.size);
                 console.log('User Post Added !');
-                this.setState = {
-                    imagePath:'',
-                    imageName:'',
-                    userTopic:'',
-                    imageUrl:''
-               }
     });
     }
 
-    render() {
+    
         return (
             <View style={styles.container}> 
-            <View style={{ flex: 3/3, backgroundColor: "white" }}>
+            <View style={{ flex: 3/3,backgroundColor: "white"  }}>
 
             <TouchableOpacity style={styles.proImage}>
                    
@@ -86,7 +71,7 @@ export default class Post extends Component {
 
             <TouchableOpacity style={styles.proImage2} 
             onPress = {
-                this.addUserPost
+                addUserPost
             }
             >
                    
@@ -102,13 +87,11 @@ export default class Post extends Component {
                         style={styles.textArea}
                         underlineColorAndroid="blue"
                         placeholder="What do you want to talk about?"
-                        placeholderTextColor="grey"
+                        placeholderTextColor="black"
                         numberOfLines={10}
                         multiline={true}
-                        value={this.state.userTopic}
-                        onChangeText={text => this.setState(
-                            {userTopic:text}
-                        )}
+                        value={userTopic}
+                        onChangeText={userTopic=>{setUserTopic(userTopic)}}
                     />
             </View>
             
@@ -121,9 +104,7 @@ export default class Post extends Component {
 
                 <View style = {styles.redbox} >
                 <TouchableOpacity style={{flexDirection:"row",alignItems:'center',justifyContent:'center'}}
-                onPress={
-                    this.getImage
-                }
+                onPress={getImage}
                 >
                     <FontAwesome name="photo" size={27} style={{flex:1/9}}/>
                     <Text style={{flex:8/9,fontSize:16}}>Add a photo</Text>
@@ -170,8 +151,8 @@ export default class Post extends Component {
             </View>
         )
     }
-}
 
+export default Post2;
 
 const styles = StyleSheet.create({
     container:{
